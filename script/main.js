@@ -90,3 +90,27 @@ function proximaImg() {
 
     document.getElementById('radio'+cont).checked = true
 }
+
+const finalizacaoDiv = document.getElementById('finalizacao');
+const totalFinalP = document.getElementById('total-final');
+const btnFinalizar = document.getElementById('btn-finalizar');
+
+function atualizarCarrinho() {
+  let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+  carrinhoBtn.innerText = Carrinho: ${carrinho.length} itens | Total: R$ ${total.toFixed(2)};
+
+  if (carrinho.length > 0) {
+    finalizacaoDiv.style.display = 'block';
+    totalFinalP.innerText = Total: R$ ${total.toFixed(2)};
+  } else {
+    finalizacaoDiv.style.display = 'none';
+  }
+}
+
+btnFinalizar.addEventListener('click', () => {
+  if (carrinho.length === 0) return;
+
+  alert('Obrigado pela sua compra! 🥰');
+  carrinho = [];
+  atualizarCarrinho();
+});
