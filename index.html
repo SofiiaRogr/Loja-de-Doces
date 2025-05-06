@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doce Sonho - Loja de Doces</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- CSS Externo -->
+  <link rel="stylesheet" href="style/styles.css" />
+  <link rel="stylesheet" href="style/header.css" />
+  <link rel="stylesheet" href="style/slider.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Baloo 2', cursive;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f8d5e4 0%, #d4e6f8 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    h1, h2 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .categorias {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .categoria-btn {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: white;
+      color: #4285f4;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .categoria-btn:hover, .categoria-btn.ativo {
+      background-color: #4285f4;
+      color: white;
+    }
+
+    .doces-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+      padding: 0 20px;
+    }
+
+    .doce-card {
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .doce-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .doce-imagem {
+      height: 200px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #888;
+    }
+
+    .doce-info {
+      padding: 15px;
+      background: linear-gradient(to bottom right, #f8d5e4, #d4e6f8);
+    }
+
+    .doce-nome {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .doce-descricao {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .doce-preco {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ea359f;
+      text-align: right;
+    }
+
+    .doce-acoes {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-comprar {
+      background-color: #4285f4;
+      color: white;
+    }
+
+    .btn-comprar:hover {
+      background-color: #3367d6;
+    }
+
+    .btn-detalhes {
+      background-color: #f8d5e4;
+      color: #333;
+    }
+
+    .btn-detalhes:hover {
+      background-color: #e6c3d3;
+    }
+
+    footer {
+      background: linear-gradient(to right, #4285f4, #ea359f);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+
+    #carrinho {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4285f4;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    form {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .doces-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header + Navegação -->
+  <header>
+    <nav id="navbar">
+      <div id="nav_logo">
+        <i class="fa-brands fa-apple"></i>
+        <span>Doce Sonho</span>
+      </div>
+      <ul id="nav_list">
+        <li class="nav-item active"><a href="#home">Início</a></li>
+        <li class="nav-item"><a href="#menu">Cardápio</a></li>
+        <li class="nav-item"><a href="#testimonials">Avaliações</a></li>
+      </ul>
+    </nav>
+  </header>
+    <!-- Carrossel -->
+  <section class="slider">
+    <div class="slider-cont">
+      <input type="radio" name="btn-radio" id="radio1">
+      <input type="radio" name="btn-radio" id="radio2">
+      <input type="radio" name="btn-radio" id="radio3">
+
+      <div class="slide-box primeiro">
+        <img src="src/img 1.png" alt="slide 1">
+      </div>
+
+      <div class="slide-box">
+        <img src="src/img 2.png" alt="slide 2">
+      </div>
+
+      <div class="slide-box">
+        <img src="src/img 3.png" alt="slide 3">
+      </div>
+
+      <div class="nav-auto">
+        <div class="auto-btn1"></div>
+        <div class="auto-btn2"></div>
+        <div class="auto-btn3"></div>
+      </div>
+
+      <div class="nav-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <div class="categorias">
+    <button class="categoria-btn ativo" data-categoria="todos">Todos</button>
+    <button class="categoria-btn" data-categoria="chocolate">Chocolate</button>
+    <button class="categoria-btn" data-categoria="goma">Gomas</button>
+    <button class="categoria-btn" data-categoria="doce">Doces</button>
+    <button class="categoria-btn" data-categoria="salgado">Salgados</button>
+  </div>
+
+  <!-- Doces -->
+  <div class="doces-container" id="doces-container"></div>
+
+  <!-- Formulário de Novo Produto -->
+  <div class="container">
+    <h2>Adicionar Novo Produto</h2>
+    <form id="form-novo-doce">
+      <input type="text" id="novo-nome" placeholder="Nome do Doce" required />
+      <input type="text" id="novo-descricao" placeholder="Descrição" required />
+      <input type="number" id="novo-preco" placeholder="Preço (ex: 4.50)" step="0.01" required />
+      <input type="text" id="novo-categoria" placeholder="Categoria (ex: doce, chocolate, goma, salgado)" required />
+      <input type="text" id="novo-emoji" placeholder="Emoji (ex: 🍫)" required />
+      <button type="submit" class="btn btn-comprar">Adicionar Produto</button>
+    </form>
+  </div>
+
+  <!-- Carrinho -->
+  <div id="carrinho">Carrinho: 0 itens</div>
+
+  <footer>
+    <p>&copy; 2025 Doce Sonho. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+ <!-- Scripts -->
+<script>
+    const doces = [
+      { id: 1, nome: "Barrinha de Chocolate", descricao: "Deliciosa barra de chocolate ao leite", preco: 3.50, categoria: "chocolate", emoji: "🍫" },
+      { id: 2, nome: "Jujubas Coloridas", descricao: "Mix de jujubas com diversos sabores", preco: 2.90, categoria: "goma", emoji: "🍬" },
+      { id: 3, nome: "Pirulito Gigante", descricao: "Pirulito com 15cm de diâmetro", preco: 5.00, categoria: "doce", emoji: "🍭" },
+      { id: 4, nome: "Bala de Café", descricao: "Bala com sabor intenso de café", preco: 1.50, categoria: "doce", emoji: "🍬" },
+      { id: 5, nome: "Chocolate Branco", descricao: "Barra de chocolate branco cremoso", preco: 4.20, categoria: "chocolate", emoji: "🍫" },
+      { id: 6, nome: "Goma de Ursinho", descricao: "Pacote com 50 ursinhos de goma", preco: 7.90, categoria: "goma", emoji: "🐻" },
+      { id: 7, nome: "Bala de Hortelã", descricao: "Bala refrescante de hortelã", preco: 1.20, categoria: "doce", emoji: "🍬" },
+      { id: 8, nome: "Chocolate Amargo", descricao: "Barra de chocolate 70% cacau", preco: 6.50, categoria: "chocolate", emoji: "🍫" },
+      { id: 9, nome: "Torrone", descricao: "Torrone italiano tradicional", preco: 8.90, categoria: "doce", emoji: "🍯" },
+      { id: 10, nome: "Biscoito Recheado", descricao: "Biscoito com recheio de chocolate", preco: 2.30, categoria: "salgado", emoji: "🍪" },
+      { id: 11, nome: "Maçã do Amor", descricao: "Maçã caramelizada tradicional", preco: 9.90, categoria: "doce", emoji: "🍎" },
+      { id: 12, nome: "Pipoca Doce", descricao: "Pipoca caramelizada crocante", preco: 4.50, categoria: "salgado", emoji: "🍿" }
+    ];
+  
+    let carrinho = [];
+  
+    const container = document.getElementById('doces-container');
+    const categoriaBtns = document.querySelectorAll('.categoria-btn');
+    const carrinhoBtn = document.getElementById('carrinho');
+  
+    function renderDoces(categoria = 'todos') {
+      container.innerHTML = '';
+      const docesFiltrados = categoria === 'todos' ? doces : doces.filter(doce => doce.categoria === categoria);
+      docesFiltrados.forEach(doce => {
+        const doceCard = document.createElement('div');
+        doceCard.className = 'doce-card';
+        doceCard.innerHTML = `
+          <div class="doce-imagem">${doce.emoji}</div>
+          <div class="doce-info">
+            <h3 class="doce-nome">${doce.nome}</h3>
+            <p class="doce-descricao">${doce.descricao}</p>
+            <p class="doce-preco">R$ ${doce.preco.toFixed(2)}</p>
+            <div class="doce-acoes">
+              <button class="btn btn-detalhes">Detalhes</button>
+              <button class="btn btn-comprar" data-id="${doce.id}">Adicionar ao Carrinho</button>
+            </div>
+          </div>`;
+        container.appendChild(doceCard);
+      });
+    }
+  
+    function atualizarCarrinho() {
+      let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+      carrinhoBtn.innerText = `Carrinho: ${carrinho.length} itens | Total: R$ ${total.toFixed(2)}`;
+    }
+  
+    categoriaBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        categoriaBtns.forEach(b => b.classList.remove('ativo'));
+        this.classList.add('ativo');
+        const categoria = this.getAttribute('data-categoria');
+        renderDoces(categoria);
+      });
+    });
+  
+    document.addEventListener('click', function (e) {
+      if (e.target.classList.contains('btn-comprar')) {
+        const doceId = e.target.getAttribute('data-id');
+        const doce = doces.find(d => d.id == doceId);
+        carrinho.push(doce);
+        atualizarCarrinho();
+        alert(`${doce.nome} adicionado ao carrinho! 🛒`);
+      }
+    });
+  
+    document.getElementById('form-novo-doce').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nome = document.getElementById('novo-nome').value.trim();
+      const descricao = document.getElementById('novo-descricao').value.trim();
+      const preco = parseFloat(document.getElementById('novo-preco').value);
+      const categoria = document.getElementById('novo-categoria').value.trim().toLowerCase();
+      const emoji = document.getElementById('novo-emoji').value.trim();
+  
+      if (!nome || !descricao || isNaN(preco) || !categoria || !emoji) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
+  
+      const novoDoce = {
+        id: Date.now(),
+        nome,
+        descricao,
+        preco,
+        categoria,
+        emoji
+      };
+  
+      doces.push(novoDoce);
+      const categoriaAtual = document.querySelector('.categoria-btn.ativo').dataset.categoria;
+      renderDoces(categoriaAtual);
+      this.reset();
+      alert(`${nome} foi adicionado com sucesso! 🎉`);
+    });
+  
+    renderDoces();
+  </script>
+  <script src="script/main.js"></script>   
+</body>
+</html>
