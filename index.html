@@ -278,6 +278,15 @@
   <!-- Carrinho -->
   <div id="carrinho">Carrinho: 0 itens</div>
 
+  <!-- Carrinho -->
+  <div id="carrinho">Carrinho: 0 itens</div>
+
+  <!-- Finalização de Compra -->
+  <div id="finalizacao" style="position: fixed; bottom: 80px; right: 20px; background: white; padding: 15px 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); display: none; z-index: 1000;">
+  <p id="total-final">Total: R$ 0,00</p>
+  <button id="btn-finalizar" style="margin-top: 10px; background-color: #ea359f; color: white; border: none; border-radius: 20px; padding: 8px 15px; cursor: pointer;">Finalizar Compra</button>
+  </div>
+  
   <footer>
     <p>&copy; 2025 Doce Sonho. Todos os direitos reservados.</p>
   </footer>
@@ -405,16 +414,6 @@ btnFinalizar.addEventListener('click', () => {
   carrinho = [];
   atualizarCarrinho();
 });
-
-<!-- Carrinho -->
-<div id="carrinho">Carrinho: 0 itens</div>
-
-<!-- Finalização de Compra -->
-<div id="finalizacao" style="position: fixed; bottom: 80px; right: 20px; background: white; padding: 15px 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); display: none; z-index: 1000;">
-  <p id="total-final">Total: R$ 0,00</p>
-  <button id="btn-finalizar" style="margin-top: 10px; background-color: #ea359f; color: white; border: none; border-radius: 20px; padding: 8px 15px; cursor: pointer;">Finalizar Compra</button>
-</div>
-  
   </script>
   <script src="script/main.js"></script>   
 </body>
