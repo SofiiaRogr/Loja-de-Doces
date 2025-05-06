@@ -381,6 +381,40 @@
     });
   
     renderDoces();
+  
+const finalizacaoDiv = document.getElementById('finalizacao');
+const totalFinalP = document.getElementById('total-final');
+const btnFinalizar = document.getElementById('btn-finalizar');
+
+function atualizarCarrinho() {
+  let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+  carrinhoBtn.innerText = Carrinho: ${carrinho.length} itens | Total: R$ ${total.toFixed(2)};
+
+  if (carrinho.length > 0) {
+    finalizacaoDiv.style.display = 'block';
+    totalFinalP.innerText = Total: R$ ${total.toFixed(2)};
+  } else {
+    finalizacaoDiv.style.display = 'none';
+  }
+}
+
+btnFinalizar.addEventListener('click', () => {
+  if (carrinho.length === 0) return;
+
+  alert('Obrigado pela sua compra! 🥰');
+  carrinho = [];
+  atualizarCarrinho();
+});
+
+<!-- Carrinho -->
+<div id="carrinho">Carrinho: 0 itens</div>
+
+<!-- Finalização de Compra -->
+<div id="finalizacao" style="position: fixed; bottom: 80px; right: 20px; background: white; padding: 15px 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); display: none; z-index: 1000;">
+  <p id="total-final">Total: R$ 0,00</p>
+  <button id="btn-finalizar" style="margin-top: 10px; background-color: #ea359f; color: white; border: none; border-radius: 20px; padding: 8px 15px; cursor: pointer;">Finalizar Compra</button>
+</div>
+  
   </script>
   <script src="script/main.js"></script>   
 </body>
