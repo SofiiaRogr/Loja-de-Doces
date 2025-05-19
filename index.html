@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doce Sonho - Loja de Doces</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- CSS Externo -->
+  <link rel="stylesheet" href="style/styles.css" />
+  <link rel="stylesheet" href="style/header.css" />
+  <link rel="stylesheet" href="style/slider.css" />
+  <link rel="stylesheet" href="style/itens.css" />
+</head>
+
+<body>
+  <!-- Header + Navegação -->
+  <header>
+    <nav id="navbar">
+      <div id="nav_logo">
+        <i class="fa-brands fa-apple"></i>
+        <span>Doce Sonho</span>
+      </div>
+      <ul id="nav_list">
+        <li class="nav-item active"><a href="#home">Início</a></li>
+        <li class="nav-item"><a href="#menu">Cardápio</a></li>
+        <li class="nav-item"><a href="#testimonials">Avaliações</a></li>
+      </ul>
+    </nav>
+  </header>
+    <!-- Carrossel -->
+  <section class="slider">
+    <div class="slider-cont">
+      <input type="radio" name="btn-radio" id="radio1">
+      <input type="radio" name="btn-radio" id="radio2">
+      <input type="radio" name="btn-radio" id="radio3">
+
+      <div class="slide-box primeiro">
+        <img src="src/img 1.png" alt="slide 1">
+      </div>
+
+      <div class="slide-box">
+        <img src="src/img 2.png" alt="slide 2">
+      </div>
+
+      <div class="slide-box">
+        <img src="src/img 3.png" alt="slide 3">
+      </div>
+
+      <div class="nav-auto">
+        <div class="auto-btn1"></div>
+        <div class="auto-btn2"></div>
+        <div class="auto-btn3"></div>
+      </div>
+
+      <div class="nav-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <div class="categorias">
+    <button class="categoria-btn ativo" data-categoria="todos">Todos</button>
+    <button class="categoria-btn" data-categoria="chocolate">Chocolate</button>
+    <button class="categoria-btn" data-categoria="goma">Gomas</button>
+    <button class="categoria-btn" data-categoria="doce">Doces</button>
+    <button class="categoria-btn" data-categoria="salgado">Salgados</button>
+  </div>
+
+  <!-- Doces -->
+  <div class="doces-container" id="doces-container"></div>
+
+  <!-- Formulário de Novo Produto -->
+  <div class="container">
+    <h2>Adicionar Novo Produto</h2>
+    <form id="form-novo-doce">
+      <input type="text" id="novo-nome" placeholder="Nome do Doce" required />
+      <input type="text" id="novo-descricao" placeholder="Descrição" required />
+      <input type="number" id="novo-preco" placeholder="Preço (ex: 4.50)" step="0.01" required />
+      <input type="text" id="novo-categoria" placeholder="Categoria (ex: doce, chocolate, goma, salgado)" required />
+      <input type="text" id="novo-emoji" placeholder="Emoji (ex: 🍫)" required />
+      <button type="submit" class="btn btn-comprar">Adicionar Produto</button>
+    </form>
+  </div>
+  <div id="carrinho">Carrinho: 0 itens</div>
+
+  <footer>
+    <p>&copy; 2025 Doce Sonho. Todos os direitos reservados.</p>
+  </footer>
+
+<script src="script/main.js"></script>   
+</body>
+</html>

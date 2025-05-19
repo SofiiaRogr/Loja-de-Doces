@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+  }
+
+  body {
+    background: linear-gradient(135deg, #f8d5e4 0%, #d4e6f8 100%);
+    color: #333;
+    min-height: 100vh;
+  }
+
+  h1, h2 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+  }
+
+  .categoria-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    color: #4285f4;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .categoria-btn:hover, .categoria-btn.ativo {
+    background-color: #4285f4;
+    color: white;
+  }
+
+  .doces-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    padding: 0 20px;
+  }
+
+  .doce-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .doce-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .doce-imagem {
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #888;
+  }
+
+  .doce-info {
+    padding: 15px;
+    background: linear-gradient(to bottom right, #f8d5e4, #d4e6f8);
+  }
+
+  .doce-nome {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .doce-descricao {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  .doce-preco {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ea359f;
+    text-align: right;
+  }
+
+  .doce-acoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-comprar {
+    background-color: #4285f4;
+    color: white;
+  }
+
+  .btn-comprar:hover {
+    background-color: #3367d6;
+  }
+
+  .btn-detalhes {
+    background-color: #f8d5e4;
+    color: #333;
+  }
+
+  .btn-detalhes:hover {
+    background-color: #e6c3d3;
+  }
+
+  footer {
+    background: linear-gradient(to right, #4285f4, #ea359f);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+  }
+
+  #carrinho {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4285f4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+
+  @media (max-width: 768px) {
+    .doces-container {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
